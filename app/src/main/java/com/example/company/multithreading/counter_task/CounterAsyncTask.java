@@ -19,7 +19,9 @@ public final class CounterAsyncTask extends CounterTask {
 
     @Override
     public void cancel() {
-        asyncTask.cancel(true);
+        if (asyncTask != null) {
+            asyncTask.cancel(true);
+        }
     }
 
     private static final class CounterTask extends AsyncTask<Void, Integer, Void> {

@@ -33,7 +33,9 @@ public final class CounterThreadsTask extends CounterTask implements Runnable {
 
     @Override
     public void cancel() {
-        thread.interrupt();
+        if (thread != null) {
+            thread.interrupt();
+        }
     }
 
     /**
