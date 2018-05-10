@@ -15,6 +15,10 @@ public final class CounterThreadsTask extends CounterTask implements Runnable {
     public void create() {
         thread = new Thread(this);
         handler = new Handler(Looper.getMainLooper()) {
+            /**
+             * Runs on main/UI thread - invokes listener with ongoing progress.
+             * @param msg Message containing a progress update sent from the background thread at {@link Runnable#run()}.
+             */
             @Override
             public void handleMessage(Message msg) {
                 listener.onProgressUpdate(msg.getData().getInt(HANDLER_PROGRESS_MSG_KEY));
@@ -29,9 +33,7 @@ public final class CounterThreadsTask extends CounterTask implements Runnable {
 
     @Override
     public void cancel() {
-        if (thread != null) {
-            thread.interrupt();
-        }
+        thread.interrupt();
     }
 
     /**

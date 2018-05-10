@@ -46,6 +46,10 @@ public final class CounterAsyncTask extends CounterTask {
             return null;
         }
 
+        /**
+         * Runs on main/UI thread - invokes listener with ongoing progress.
+         * @param progress Progress published from doInBackground.
+         */
         @Override
         protected void onProgressUpdate(@NonNull Integer... progress) {
             listener.onProgressUpdate(progress[0]);
