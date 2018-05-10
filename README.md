@@ -1,6 +1,6 @@
 # How are memory leaks & crashes avoided here?
 First of all, we must acknoledge the fact that Android Activities are *destroyed* and created again upon configuration changes
-(i.e. orientation change of the device). Thus, background tasks such as AsyncTasks and Thread executions
+(i.e. orientation change of the device). Thus, ongoing background tasks such as AsyncTasks and Thread executions
 deliver progress updates to a non-existent activity after said event transpires.
 The best and most convenient method to overcome this issue is have the background task executed from a Fragment.
 In general Fragments are destroyed and recreated along with their parent Activity when a configuration change occurs.
