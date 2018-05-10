@@ -54,7 +54,7 @@ public class TaskFragment extends Fragment implements View.OnClickListener, Coun
     @SuppressWarnings("ConstantConditions")
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_worker, container, false);
+        final View view = inflater.inflate(R.layout.fragment_task, container, false);
 
         (createButton = view.findViewById(R.id.create_button)).setOnClickListener(this);
         (startButton = view.findViewById(R.id.start_button)).setOnClickListener(this);
