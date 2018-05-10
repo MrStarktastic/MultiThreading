@@ -1,12 +1,12 @@
 package com.example.company.multithreading.task_activity;
 
 import com.example.company.multithreading.counter_task.CounterThreadsTask;
-import com.example.company.multithreading.counter_task.CounterTask;
+import com.example.company.multithreading.counter_task.BaseCounterTask;
 
-public final class ThreadsActivity extends TaskActivity {
+public final class ThreadsActivity extends BaseTaskActivity {
 
     @Override
-    protected CounterTask getTask() {
+    protected BaseCounterTask getTask() {
         return new CounterThreadsTask();
     }
 }

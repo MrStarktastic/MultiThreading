@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.company.multithreading.R;
 import com.example.company.multithreading.TaskFragment;
-import com.example.company.multithreading.counter_task.CounterTask;
+import com.example.company.multithreading.counter_task.BaseCounterTask;
 
-abstract class TaskActivity extends AppCompatActivity {
+abstract class BaseTaskActivity extends AppCompatActivity {
     private static final String TAG_TASK_FRAGMENT = "Task Fragment";
 
     @Override
@@ -25,5 +25,5 @@ abstract class TaskActivity extends AppCompatActivity {
         }
     }
 
-    abstract protected CounterTask getTask();
+    abstract protected BaseCounterTask getTask();
 }

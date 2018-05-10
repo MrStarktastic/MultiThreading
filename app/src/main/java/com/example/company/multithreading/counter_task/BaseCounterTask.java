@@ -1,6 +1,6 @@
 package com.example.company.multithreading.counter_task;
 
-public abstract class CounterTask {
+public abstract class BaseCounterTask {
     public static final int MAX_PROGRESS = 10;
     static final long SLEEP_DURATION = 500;
 

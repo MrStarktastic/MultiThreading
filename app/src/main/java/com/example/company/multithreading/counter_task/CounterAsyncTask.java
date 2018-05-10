@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-public final class CounterAsyncTask extends CounterTask {
+public final class CounterAsyncTask extends BaseCounterTask {
     private CounterTask asyncTask;
 
     @Override
