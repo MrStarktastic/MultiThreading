@@ -111,7 +111,7 @@ public class TaskFragment extends Fragment implements View.OnClickListener, Coun
     public void onProgressUpdate(int progress) {
         if (progress == CounterTask.MAX_PROGRESS) {
             toggleEnabled(cancelButton, createButton);
-            taskProgressText.setText(R.string.default_task_progress);
+            taskProgressText.setText(R.string.done_task_progress);
             return;
         }
 

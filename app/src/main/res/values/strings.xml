@@ -5,6 +5,7 @@
     <string name="threads_activity">Threads Activity</string>
 
     <string name="default_task_progress">1. Create\n2. Start\n3. ????\n4. PROFIT!!!</string>
+    <string name="done_task_progress">Done!</string>
     <string name="create">Create</string>
     <string name="start">Start</string>
     <string name="cancel">Cancel</string>
