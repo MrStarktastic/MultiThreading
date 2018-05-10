@@ -88,18 +88,18 @@ public class TaskFragment extends Fragment implements View.OnClickListener, Coun
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.create_button:
-                toggleEnabled(createButton, startButton);
+                toggleEnabled(v, startButton);
                 task.create();
                 taskProgressText.setText(Integer.toString(0));
                 break;
 
             case R.id.start_button:
-                toggleEnabled(startButton, cancelButton);
+                toggleEnabled(v, cancelButton);
                 task.start();
                 break;
 
             case R.id.cancel_button:
-                toggleEnabled(cancelButton, createButton);
+                toggleEnabled(v, createButton);
                 task.cancel();
                 taskProgressText.setText(R.string.default_task_progress);
                 break;
