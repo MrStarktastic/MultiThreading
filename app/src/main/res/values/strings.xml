@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MultiThreading</string>
+    <string name="main_activity">Main Activity</string>
+    <string name="asynctask_activity">AsyncTask Activity</string>
+    <string name="threads_activity">Threads Activity</string>
+
+    <string name="default_task_progress">1. Create\n2. Start\n3. ????\n4. PROFIT!!!</string>
+    <string name="create">Create</string>
+    <string name="start">Start</string>
+    <string name="cancel">Cancel</string>
+</resources>
