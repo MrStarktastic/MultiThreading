@@ -17,7 +17,7 @@
         android:layout_marginTop="16dp"
         android:layout_below="@id/task_progress_text">
 
-        <include layout="@layout/horizontal_fill_space" />
+        <include layout="@layout/space_horizontal_fill" />
 
         <Button
             android:id="@+id/create_button"
@@ -27,7 +27,7 @@
             android:backgroundTint="#1E88E5"
             android:text="@string/create" />
 
-        <include layout="@layout/horizontal_fill_space" />
+        <include layout="@layout/space_horizontal_fill" />
 
         <Button
             android:id="@+id/start_button"
@@ -38,7 +38,7 @@
             android:enabled="false"
             android:text="@string/start" />
 
-        <include layout="@layout/horizontal_fill_space" />
+        <include layout="@layout/space_horizontal_fill" />
 
         <Button
             android:id="@+id/cancel_button"
@@ -49,7 +49,7 @@
             android:enabled="false"
             android:text="@string/cancel" />
 
-        <include layout="@layout/horizontal_fill_space" />
+        <include layout="@layout/space_horizontal_fill" />
 
     </LinearLayout>
 </RelativeLayout>
