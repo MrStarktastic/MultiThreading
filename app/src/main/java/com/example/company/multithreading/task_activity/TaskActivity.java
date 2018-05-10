@@ -19,6 +19,7 @@ abstract class TaskActivity extends AppCompatActivity {
         final FragmentManager fm = getSupportFragmentManager();
 
         if (fm.findFragmentByTag(TAG_TASK_FRAGMENT) == null) {
+            // Create the TaskFragment for the first time
             final TaskFragment fragment = TaskFragment.newInstance(getTask());
             fm.beginTransaction().add(R.id.container_view, fragment, TAG_TASK_FRAGMENT).commit();
         }
