@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Convenience method for starting a new activity.
+     *
+     * @param counterTaskClass The class of the task to pass into the new activity.
      */
     private void startActivity(Class<? extends BaseCounterTask> counterTaskClass) {
         final Intent intent = new Intent(this, CounterTaskActivity.class);
