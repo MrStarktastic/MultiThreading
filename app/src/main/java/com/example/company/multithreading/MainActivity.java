@@ -5,8 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.company.multithreading.task_activity.AsyncTaskActivity;
-import com.example.company.multithreading.task_activity.ThreadsActivity;
+import com.example.company.multithreading.counter_task.BaseCounterTask;
+import com.example.company.multithreading.counter_task.CounterAsyncTask;
+import com.example.company.multithreading.counter_task.CounterThreadsTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,18 +19,17 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Convenience method for starting a new activity.
-     *
-     * @param activityClass The class of the activity to start.
      */
-    private void startActivity(Class activityClass) {
-        startActivity(new Intent(this, activityClass));
+    private void startActivity(Class<? extends BaseCounterTask> counterTaskClass) {
+        final Intent intent = new Intent(this, CounterTaskActivity.class);
+        startActivity(intent.putExtra(CounterTaskActivity.EXTRA_COUNTER_TASK_CLASS, counterTaskClass));
     }
 
     public void openAsyncTaskActivity(View view) {
-        startActivity(AsyncTaskActivity.class);
+        startActivity(CounterAsyncTask.class);
     }
 
     public void openThreadsActivity(View view) {
-        startActivity(ThreadsActivity.class);
+        startActivity(CounterThreadsTask.class);
     }
 }
