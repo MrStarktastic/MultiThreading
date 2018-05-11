@@ -51,7 +51,20 @@ public class TaskFragment extends Fragment implements View.OnClickListener, Base
         outState.putCharSequence(KEY_TASK_PROGRESS_STATE, taskProgressText.getText());
     }
 
+    /**
+     * Restores UI states after configuration change (because View is destroyed and recreated).
+     *
+     * @param savedInstanceState Bundle that contains the saved instance states of the UI components.
+     */
     @SuppressWarnings("ConstantConditions")
+    private void restoreSavedInstanceState(@NonNull Bundle savedInstanceState) {
+        taskProgressText.setText(savedInstanceState.getCharSequence(KEY_TASK_PROGRESS_STATE));
+        final boolean[] states = savedInstanceState.getBooleanArray(KEY_BUTTON_ENABLED_STATES);
+        createButton.setEnabled(states[0]);
+        startButton.setEnabled(states[1]);
+        cancelButton.setEnabled(states[2]);
+    }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_task, container, false);
@@ -61,13 +74,7 @@ public class TaskFragment extends Fragment implements View.OnClickListener, Base
         (cancelButton = view.findViewById(R.id.cancel_button)).setOnClickListener(this);
         taskProgressText = view.findViewById(R.id.task_progress_text);
 
-        if (savedInstanceState != null) { // Restore UI states after configuration change
-            taskProgressText.setText(savedInstanceState.getCharSequence(KEY_TASK_PROGRESS_STATE));
-            final boolean[] states = savedInstanceState.getBooleanArray(KEY_BUTTON_ENABLED_STATES);
-            createButton.setEnabled(states[0]);
-            startButton.setEnabled(states[1]);
-            cancelButton.setEnabled(states[2]);
-        }
+        if (savedInstanceState != null) restoreSavedInstanceState(savedInstanceState);
 
         return view;
     }
