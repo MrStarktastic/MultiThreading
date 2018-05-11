@@ -59,10 +59,10 @@ public class TaskFragment extends Fragment implements View.OnClickListener, Base
     @SuppressWarnings("ConstantConditions")
     private void restoreSavedInstanceState(@NonNull Bundle savedInstanceState) {
         taskProgressText.setText(savedInstanceState.getCharSequence(KEY_TASK_PROGRESS_STATE));
-        final boolean[] states = savedInstanceState.getBooleanArray(KEY_BUTTON_ENABLED_STATES);
-        createButton.setEnabled(states[0]);
-        startButton.setEnabled(states[1]);
-        cancelButton.setEnabled(states[2]);
+        final boolean[] buttonStates = savedInstanceState.getBooleanArray(KEY_BUTTON_ENABLED_STATES);
+        createButton.setEnabled(buttonStates[0]);
+        startButton.setEnabled(buttonStates[1]);
+        cancelButton.setEnabled(buttonStates[2]);
     }
 
     @Override
