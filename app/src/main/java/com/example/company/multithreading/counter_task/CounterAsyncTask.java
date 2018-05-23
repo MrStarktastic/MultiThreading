@@ -24,6 +24,11 @@ public final class CounterAsyncTask extends BaseCounterTask {
         }
     }
 
+    @Override
+    public String getName() {
+        return "AsyncTask";
+    }
+
     private static final class CounterTask extends AsyncTask<Void, Integer, Void> {
         private final OnProgressUpdateListener listener;
 

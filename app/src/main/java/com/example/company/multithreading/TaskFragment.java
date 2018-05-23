@@ -1,9 +1,11 @@
 package com.example.company.multithreading;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.company.multithreading.counter_task.BaseCounterTask;
+
+import static com.example.company.multithreading.CounterTaskActivity.EXTRA_COUNTER_TASK_CLASS;
 
 public class TaskFragment extends Fragment implements View.OnClickListener, BaseCounterTask.OnProgressUpdateListener {
     private static final String KEY_TASK_PROGRESS_STATE = "Task progress";
@@ -25,17 +29,29 @@ public class TaskFragment extends Fragment implements View.OnClickListener, Base
         // Required empty public constructor
     }
 
-    public static TaskFragment newInstance(BaseCounterTask task) {
-        final TaskFragment fragment = new TaskFragment();
-        fragment.task = task;
-        return fragment;
+    /**
+     * Fetches the desired {@link BaseCounterTask} {@link Class} from the parent
+     * {@link CounterTaskActivity}'s {@link Intent} and initializes an instance of it.
+     */
+    @SuppressWarnings("ConstantConditions")
+    private void initTask() throws IllegalAccessException, java.lang.InstantiationException {
+        final FragmentActivity activity = getActivity();
+        final Class taskClass = (Class) activity.getIntent().getSerializableExtra(EXTRA_COUNTER_TASK_CLASS);
+        task = (BaseCounterTask) taskClass.newInstance();
+        task.setOnProgressUpdateListener(this);
+        activity.setTitle(task.getName());
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true); // Retain this fragment on configuration change (e.q. orientation)
-        task.setOnProgressUpdateListener(this);
+
+        try {
+            initTask();
+        } catch (IllegalAccessException | java.lang.InstantiationException e) { // Shouldn't happen
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -58,6 +74,7 @@ public class TaskFragment extends Fragment implements View.OnClickListener, Base
      */
     @SuppressWarnings("ConstantConditions")
     private void restoreSavedInstanceState(@NonNull Bundle savedInstanceState) {
+        getActivity().setTitle(task.getName());
         taskProgressText.setText(savedInstanceState.getCharSequence(KEY_TASK_PROGRESS_STATE));
         final boolean[] buttonStates = savedInstanceState.getBooleanArray(KEY_BUTTON_ENABLED_STATES);
         createButton.setEnabled(buttonStates[0]);

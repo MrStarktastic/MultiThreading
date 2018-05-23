@@ -38,6 +38,11 @@ public final class CounterThreadsTask extends BaseCounterTask implements Runnabl
         }
     }
 
+    @Override
+    public String getName() {
+        return "ThreadsTask";
+    }
+
     /**
      * Implementation of the {@link Runnable} interface.
      */

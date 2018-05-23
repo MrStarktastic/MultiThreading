@@ -12,6 +12,8 @@ public abstract class BaseCounterTask {
 
     public abstract void cancel();
 
+    public abstract String getName();
+
     public void setOnProgressUpdateListener(OnProgressUpdateListener listener) {
         this.listener = listener;
     }
